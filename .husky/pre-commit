@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo
+echo "--------------------------------"
+echo "Performing pre-commit operations"
+echo "--------------------------------"
+echo
+
+echo "--------------------"
+echo "1) Formating code..."
+echo "--------------------"
+npm run prettier:format
+echo "Formatting completed successfully."
+echo
+
+echo "------------------"
+echo "2) Linting code..."
+echo "------------------"
+npm run lint:fix
+echo "Linting completed successfully."
+echo
+
+echo "---------------------------"
+echo "3) Performing unit tests..."
+echo "---------------------------"
+npm run test:jest-ci
+echo "All unit tests passed."
+echo
+
+echo "--------------------------------------------"
+echo "Pre-commit operations completed successfully"
+echo "--------------------------------------------"
