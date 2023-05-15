@@ -14,14 +14,32 @@
   "files": [
     "dist"
   ],
-  "homepage": "https://emotion-elements.com",
+  "homepage": "https://github.com/Imraan-Hendricks/emotion-elements#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/Imraan-Hendricks/emotion-elements"
   },
+  "bugs": {
+    "url": "https://github.com/Imraan-Hendricks/emotion-elements/issues"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
+  "keywords": [
+    "React",
+    "Frontend",
+    "UI",
+    "Library",
+    "Component",
+    "Animation",
+    "Theme",
+    "Responsive",
+    "Accessibility",
+    "Design",
+    "Styled Components",
+    "Emotion.js",
+    "TypeScript"
+  ],
   "scripts": {
     "build": "rollup -c",
     "lint:audit": "eslint .",
