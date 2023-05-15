@@ -6,8 +6,9 @@ on:
       - main
 
 env:
+  NAME: 'emotion-elements'
   NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  SCOPE: '@Imraan-Hendricks'
+  SCOPE: '@imraan-hendricks'
 
 jobs:
   publish-github:
@@ -31,6 +32,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://npm.pkg.github.com'
           scope: '${{ env.SCOPE }}'
+
+      - name: Prepare Package.json
+        run: |
+          jq 'del(.name) | .name = "${{ env.SCOPE  }}/${{ env.NAME  }}"' package.json > tmp.json && mv tmp.json package.json
 
       - name: Installing Dependencies
         working-directory: ./

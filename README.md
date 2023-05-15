@@ -7,13 +7,13 @@ Say goodbye to tedious styling and laborious design processes – Emotion Elemen
 You can install the package using npm:
 
 ```
-npm install @hndx/emotion-elements
+npm install @imraan-hendricks/emotion-elements
 ```
 
 or with Yarn:
 
 ```
-yarn add @hndx/emotion-elements
+yarn add @imraan-hendricks/emotion-elements
 ```
 
 ### Usage
@@ -21,7 +21,7 @@ yarn add @hndx/emotion-elements
 Here's an example of how to use Emotion Elements in a React component:
 
 ```
-import { Button } from '@hndx/emotion-elements';
+import { Button } from '@imraan-hendricks/emotion-elements';
 
 const MyComponent = () => {
   return <Button>Click me!</Button>;

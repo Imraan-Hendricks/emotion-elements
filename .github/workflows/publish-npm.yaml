@@ -8,7 +8,7 @@ on:
 env:
   NAME: 'emotion-elements'
   NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-  SCOPE: '@hndx'
+  SCOPE: '@imraan-hendricks'
 
 jobs:
   publish-npm:
@@ -28,6 +28,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Prepare Package.json
+        run: |
+          jq 'del(.name) | .name = "${{ env.SCOPE  }}/${{ env.NAME  }}"' package.json > tmp.json && mv tmp.json package.json
+          jq 'del(.publishConfig)' package.json > tmp.json && mv tmp.json package.json
+
       - name: Installing Dependencies
         working-directory: ./
         run: npm ci
@@ -39,11 +44,6 @@ jobs:
       - name: Creating Production Build
         working-directory: ./
         run: npm run build
-
-      - name: Prepare Package.json
-        run: |
-          jq 'del(.name) | .name = "${{ env.SCOPE  }}/${{ env.NAME  }}"' package.json > tmp.json && mv tmp.json package.json
-          jq 'del(.publishConfig)' package.json > tmp.json && mv tmp.json package.json
 
       - name: Publish to NPM
         run: npm publish --access public
