@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [17.x, 18.x]
 
     steps:
       - name: Checkout
@@ -23,9 +23,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Installing Dependencies
-        working-directory: ./
         run: npm ci
 
       - name: Performing Unit Testing
-        working-directory: ./
         run: npm run test:jest-ci
+
+      - name: Creating Production Build
+        run: npm run build
