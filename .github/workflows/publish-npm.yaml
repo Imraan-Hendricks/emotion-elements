@@ -1,12 +1,14 @@
 name: NPM Publishing Process
 
 on:
-  pull_request:
+  push:
     branches:
       - main
 
 env:
+  NAME: 'emotion-elements'
   NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+  SCOPE: '@imraan-hendricks'
 
 jobs:
   publish-npm:
@@ -25,6 +27,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
+
+      - name: Prepare Package.json
+        run: |
+          jq 'del(.name) | .name = "${{ env.SCOPE  }}/${{ env.NAME  }}"' package.json > tmp.json && mv tmp.json package.json
+          jq 'del(.publishConfig)' package.json > tmp.json && mv tmp.json package.json
 
       - name: Installing Dependencies
         run: npm ci
