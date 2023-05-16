@@ -23,13 +23,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Installing Dependencies
-        working-directory: ./
         run: npm ci
 
       - name: Performing Unit Testing
-        working-directory: ./
         run: npm run test:jest-ci
 
       - name: Creating Production Build
-        working-directory: ./
         run: npm run build
