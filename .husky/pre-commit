@@ -11,3 +11,6 @@ echo "[SUCCESS]: Linting completed successfully"
 
 npm run test:jest-ci
 echo "[SUCCESS]: All unit tests passed"
+
+npm run build
+echo "[SUCCESS]: Built application successfully"

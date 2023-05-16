@@ -32,7 +32,7 @@ export default MyComponent;
 
 ### Documentation
 
-You can find the documentation for Emotion Elements at https://emotion-elements.com
+You can find the documentation for Emotion Elements at https://github.com/Imraan-Hendricks/emotion-elements#readme
 
 ### License
 
